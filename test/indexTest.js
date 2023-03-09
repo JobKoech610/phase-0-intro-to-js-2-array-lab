@@ -1,8 +1,10 @@
 require ( './helpers.js' );
 
 describe('index.js', function () {
+  
   describe('cats', function () {
     it('is assigned an initial value of ["Milo", "Otis", "Garfield"]', function () {
+     
       expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
     });
   });
@@ -16,17 +18,15 @@ describe('index.js', function () {
 
     describe('destructivelyAppendCat(name)', function () {
       it('appends a cat to the end of the cats array', function () {
-        destructivelyAppendCat('Ralph');
-
-        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield", "Ralph"]);
+        destructivelyAppendCat('Ralph')
+        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield", "Ralph"]);//.push()
       });
     });
 
     describe('destructivelyPrependCat(name)', function () {
       it('prepends a cat to the beginning of the cats array', function () {
         destructivelyPrependCat("Bob");
-
-        expect(cats).to.have.ordered.members(["Bob", "Milo", "Otis", "Garfield"]);
+        expect(cats).to.have.ordered.members(["Bob", "Milo", "Otis", "Garfield"]);//.unshift()
       });
     });
 
@@ -34,7 +34,7 @@ describe('index.js', function () {
       it('removes the last cat from the cats array', function () {
         destructivelyRemoveLastCat();
 
-        expect(cats).to.have.ordered.members(["Milo", "Otis"]).and.to.not.include('Garfield');
+        expect(cats).to.have.ordered.members(["Milo", "Otis"]).and.to.not.include('Garfield');//.pop()
       });
     });
 
@@ -42,7 +42,7 @@ describe('index.js', function () {
       it('removes the first cat from the cats array', function () {
         destructivelyRemoveFirstCat();
 
-        expect(cats).to.have.ordered.members(["Otis", "Garfield"]).and.to.not.include('Milo');
+        expect(cats).to.have.ordered.members(["Otis", "Garfield"]).and.to.not.include('Milo');//.shift()
       });
     });
 
@@ -50,7 +50,7 @@ describe('index.js', function () {
       it('appends a cat to the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(appendCat("Broom")).to.have.ordered.members(["Milo", "Otis", "Garfield", "Broom"]);
 
-        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
+        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);//...cats, name
       });
     });
 
@@ -58,7 +58,7 @@ describe('index.js', function () {
       it('prepends a cat to the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(prependCat("Arnold")).to.have.ordered.members(["Arnold", "Milo", "Otis", "Garfield"]);
 
-        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
+        expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);//name, ...cats
       });
     });
 
